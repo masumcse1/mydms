@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:t="http://java.sun.com/jsf/composite/telveComponents"
+                template="/layout/masterViewBase.xhtml">
+
+    <ui:define name="content">
+        <div class="row">
+          <!--   <t:accordion icon="fa fa-stack-exchange" label="general.label.Summary" columnClass="col-md-4">
+
+                <t:outputText label="general.label.Category" value="#{commodityNewHome.entity.category.name}"  columnClass="col-sm-12"/>
+                <t:outputText label="general.label.UnitSet" value="#{commodityNewHome.entity.unitSet.name}"  columnClass="col-sm-12"/>
+                <t:outputText label="general.label.Unit" value="#{commodityNewHome.entity.unitName}" columnClass="col-sm-12" />
+                <t:outputCurrency label="general.label.Currency" value="#{commodityNewHome.entity.defaultCurrency}" columnClass="col-md-6" />
+                <t:outputMoney label="general.label.Price" value="#{commodityNewHome.entity.price}" currency="#{commodityNewHome.entity.defaultCurrency}" columnClass="col-md-6" />
+            </t:accordion>
+
+            <t:accordion icon="fa flaticon-tax" label="general.label.Taxes" columnClass="col-md-4" contentClass="">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>#{messages['general.label.Tax']}</th>
+                        <th>#{messages['taxDefinition.label.TaxType']}</th>
+                        <th>#{messages['taxDefinition.label.Rate']}</th>
+                    </tr>
+                    <p:repeat var="it" value="#{commodityNewHome.getTaxList()}" varStatus="ctr">
+                        <tr>
+                            <td>
+                                <h:outputText value="#{it.name}"/>
+                            </td>
+                            <td>
+                                <h:outputText value="#{messages['taxDefinition.type.'.concat(it.type)]}" />
+                            </td>
+                            <td>
+                                <h:outputText value="% #{it.rate}" />
+                            </td>
+                        </tr>
+                    </p:repeat>
+                </table>
+            </t:accordion> -->
+
+                    </div>
+    </ui:define>
+
+
+</ui:composition>

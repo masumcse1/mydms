@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://java.sun.com/jsf/composite/telveComponents"
+	xmlns:p="http://primefaces.org/ui" template="/layout/editBase.xhtml">
+
+	<ui:param name="homeBean" value="#{supplierHome}" />
+	<ui:param name="entity" value="#{supplierHome.entity}" />
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="eid" value="#{supplierHome.id}" />
+			<f:viewAction action="#{supplierHome.initData()}" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="form">
+		<div class="row">
+			<div class="col-md-6 col-xs-12">
+				<div class="row">
+					<t:inputText label="general.label.Name"
+						value="#{supplierHome.entity.name}" required="true"
+						columnClass="col-xs-12" />
+						
+				        <t:inputText label="general.label.Name"
+											value="#{supplierHome.entity.address}" required="true"
+						columnClass="col-xs-12" />
+
+
+				</div>
+			</div>
+
+
+		</div>
+	</ui:define>
+</ui:composition>

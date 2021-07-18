@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:t="http://java.sun.com/jsf/composite/telveComponents"
+                xmlns:p="http://primefaces.org/ui"                   
+                template="/layout/paramBase.xhtml">
+
+    <ui:param name="homeBean" value="#{territoryHome}" />
+    <ui:param name="itemList" value="#{territoryHome.entityList}" />
+    <ui:param name="itemCaption" value="caption" />
+    <ui:param name="renderActive" value="true" />
+
+    <ui:define name="form">
+        <div class="row">
+            <t:inputText label="general.label.Name" value="#{territoryHome.entity.name}" required="true" />
+            <t:inputText label="general.label.Code" value="#{territoryHome.entity.code}" required="true" />
+        </div>            
+        <div class="row">        
+            <t:inputTextarea label="general.label.Info" value="#{territoryHome.entity.info}" required="false" />                                            
+            <t:inputCheckboxGroup label="general.label.Status">
+                <p:selectBooleanCheckbox value="#{territoryHome.entity.active}" itemLabel="#{messages['general.label.Active']}" />
+            </t:inputCheckboxGroup>
+        </div>    
+        
+        <p:outputPanel id="dets" layout="block" styleClass="row" style="margin-top: 8px;">        
+            <p:dataTable id="its" value="#{territoryHome.entity.items}" rowIndexVar="rowKey" var="item" styleClass="col-xs-12" reflow="true">
+                <p:column headerText="#{messages['general.label.Location']}">
+                    <h:outputText value="#{territoryHome.locationTree(item.location)}" />
+                </p:column>
+                
+                <p:column styleClass="actionColumn">
+                    <f:facet name="header">
+                        <p:commandLink action="#{locationLookup.openDialog(true, '')}" style="text-decoration:none;padding:4px;"
+                                       partialSubmit="true" process="@this" styleClass="fa fa-plus-circle btn-add"
+                                       title="#{messages['general.label.Add']}">
+                            <p:ajax event="dialogReturn" listener="#{territoryHome.onLocationSelect}" partialSubmit="true" 
+                                    process="@this" update="@([id$=its])"/>   
+                        </p:commandLink>
+                    </f:facet>                 
+                    <p:commandLink action="#{territoryHome.removeLocation( rowKey )}" 
+                                   update="@([id$=its])" styleClass="fa fa-trash-o btn-delete" process="@this" 
+                                   title="#{messages['general.label.Delete']}">
+                            <p:confirm header="#{messages['general.caption.Confirm']}" message="#{messages['general.message.confirm.Delete']}" icon="ui-icon-alert" />
+                    </p:commandLink>            
+                </p:column>   
+            </p:dataTable>
+        </p:outputPanel>
+    </ui:define> 
+    
+</ui:composition>

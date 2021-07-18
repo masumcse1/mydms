@@ -1,0 +1,138 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ozguryazilim.telve</groupId>
+		<artifactId>telve-app-parent</artifactId>
+		<version>4.0.0-Beta-21</version>
+	</parent>
+
+	<groupId>com.stl.dms</groupId>
+	<artifactId>dms-parent</artifactId>
+	<version>${revision}${changelist}</version>
+	<name>${project.groupId} : ${project.artifactId} : ${project.version}</name>
+	<description>dms Parent POM</description>
+	<url>http://www.southtech.com/</url>
+	<packaging>pom</packaging>
+
+
+
+	<properties>
+		<buildNumber>SNAPSHOT</buildNumber>
+		<revision>4.0.0</revision>
+		<changelist>-${buildNumber}</changelist>
+		<version.tekir>${revision}${changelist}</version.tekir>
+		<version.money-api>1.0</version.money-api>
+		<version.moneta>1.1</version.moneta>
+	</properties>
+
+   <issueManagement>
+        <system>Redmine</system>
+        <url>https://islergucler.ozguryazilim.com.tr/projects/tekir-4</url>
+    </issueManagement>
+	
+    <scm>
+        <connection>scm:git:https://lab.ozguryazilim.com.tr:tekir/tekir4</connection>
+        <developerConnection>scm:git:https://lab.ozguryazilim.com.tr:tekir/tekir4</developerConnection>
+        <url>https://lab.ozguryazilim.com.tr:tekir/tekir4</url>
+    </scm>
+	 
+    <organization>
+        <name>Özgür Yaz</name>
+        <url>http://www.ozguryazilim.com.tr/</url>
+    </organization>
+    <inceptionYear>2010</inceptionYear>
+    <licenses>
+        <license>
+            <name>LGPL 3</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>ozguryazilim.com.tr#no</id>
+            <organization>Özgür Yaz</organization>
+            <organizationUrl>http://www.ozguryazilim.com.tr</organizationUrl>
+            <timezone>GMT +2</timezone>
+        </developer>
+    </developers>
+    
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>oss</flattenMode>
+                </configuration>
+            </plugin>
+            <plugin>
+               
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <header>com/mycila/maven/plugin/license/templates/LGPL-3.txt</header>
+                    <keywords>license</keywords>
+                    <properties>
+                        <owner>${project.organization.name}</owner>
+                        <url>${project.organization.url}</url>
+                    </properties>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                    <mapping>
+                        <java>SLASHSTAR_STYLE</java>
+                    </mapping>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>license-headers</id>
+                        <goals>
+                            <goal>remove</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+
+    <repositories>
+        <repository>
+            <id>ozguryazilim</id>
+            <name>Özgür YazNexus Reporsitory</name>
+            <url>http://nexus.ozguryazilim.com.tr/repository/maven-public</url>
+        </repository>
+    </repositories>
+    
+    <distributionManagement>
+        <repository>
+            <id>ozguryazilim</id>
+            <name>Özgür YazNexus Reporsitory</name>
+            <url>http://nexus.ozguryazilim.com.tr/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ozguryazilim</id>
+            <name>Özgür Yaz Nexus Snapshots Reporsiyory</name>
+            <url>http://nexus.ozguryazilim.com.tr/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+
+    <modules>
+     	<module>dms-core</module>
+    	<module>dms-core-model</module>
+    	<module>dms-supplier</module>
+    	<module>dms-supplier-model</module>
+    	<module>dms-Web</module>
+   
+    </modules>
+</project>
